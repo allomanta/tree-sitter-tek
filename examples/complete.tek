@@ -1,0 +1,83 @@
+{* This is a comment. This is should still be accessible though. *} 
+
+\titlepage `label`
+	{* There is nothing special about titlepage, just the name given to this scope. *}
+
+	$title = Hello This Is a Title
+	{* Likewise with title, this is just a variable *}
+
+	{* a section to wrap a figure. Each scope can have a label to reference that specific scope *}
+	\figure label_figure_1
+		$path = ./image.jpg
+		$info = bla bla
+		$description = bla bla
+	/figure
+
+	{* a section that the styler may turn into a footer. *}
+	\footer
+		footer text goes here, no different than anything else.
+	/footer
+
+	\header
+		Order shouldn't matter much as long as it's within the same section. The styler does have access to the order.
+	/header
+/titlepage
+
+\section
+	$title = The first chapter/section/subsection whatever
+	\section
+		$title = The first subsection.
+	/section
+
+	\subsection
+		$title = The second subsection.
+
+		It doesn't matter what the scope is called as long as the styler knows how to use it.
+	/subsection
+
+	random text outside of the subsections.
+
+	second paragraph outside of the subsections.
+/section
+
+\special-environments
+	$title = `This is a literal string that can have any syntax the styler wants (latex). Also escapes special characters such as $`
+
+	equations can be inline \[(a)/(b) $or a//b $forall a $and b $in $integers|$bbZ]/ or as blocks =
+
+	\[
+		a =| $int_(bottom)^(top) dL[q, \dot(q)],
+		b =| $partial_ x^(x^(x)).  
+	]/
+
+	a handy reference to the title $title in the text.
+	
+	\latex-equation
+		`
+			\int \left(\frac{a}{b}\right)^{2x} dx
+		`
+	/latex-equation
+
+	- this is a list/enumeration
+	- this is the second item
+	- using a - sign at any other point doesn't become a list item
+	* is identical to - here
+	- this is just the string starting with `-`
+
+	(0-9)* can be used for enumerations maybe? otherwise just label and styling of - collections
+
+	for tables use a scope with a literal =
+
+	\table
+	`
+		a & b & c
+	`
+	/table
+	{* TODO: maybe nicer and better built in syntax without needing to escape? *}
+/special-environments
+
+{*\appendices
+	Reference by using labels maybe? TODO: design
+	same for equation/figure numbers, maybe expect the same type and reference label (\type label) for particular? Should be all the info needed for the styler
+/appendices
+*}
