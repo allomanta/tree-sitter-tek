@@ -1,3 +1,16 @@
-{
- "test": "test"
+\test{
+ hello this is a test
 }
+
+\testing
+ another test
+ \test-inline() this is an inline section
+/testing
+
+\test_brackets {
+ 
+}
+
+\test label [
+ 
+]
